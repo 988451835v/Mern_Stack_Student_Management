@@ -21,12 +21,23 @@ router.route("/add").post((req,res)=>{
     })
 })
 
-router.route("/").get(()=>{
-    Student.find().then((students)=>{
+// router.route("/view").get(()=>{
+//     Student.find().then((students)=>{
+//         res.json(students)
+//     }).catch((err)=>{
+//         console.log(err)
+//     })
+// })
+
+router.route("/").get(async(req,res)=>{
+     Student.find()
+    .then((students)=>{
         res.json(students)
     }).catch((err)=>{
-        console.log(err)
+        console.log(err);
+        
     })
+
 })
 
 router.route("/update/:id").put(async(req,res)=>{
